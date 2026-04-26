@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login</title>
+<link rel="stylesheet" th:href="@{/css/reset.css}">
+<link rel="stylesheet" th:href="@{/css/admin/admin-login.css}">
+</head>
+<body>
+
+	<div class="container">
+		<h1>Admin Login</h1>
+		<form th:action="@{/land-register/admin/login}" method="post">
+			<div class="form-group">
+				<label for="email">Email:</label> <input type="email" id="email"
+					name="email" required>
+			</div>
+
+			<div class="form-group">
+				<label for="password">Password:</label> <input type="password"
+					id="password" name="password" required>
+			</div>
+
+			<div class="btn-container">
+				<button type="submit" class="button">Login</button>
+			</div>
+		</form>
+
+		<!-- display error message -->
+		<div th:if="${error}" class="error-message">
+			<p th:text="${error}"></p>
+		</div>
+	</div>
+</body>
+</html>

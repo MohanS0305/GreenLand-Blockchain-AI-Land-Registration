@@ -1,0 +1,125 @@
+/* Styles for the entire page */
+body {
+	background-color: #e0f7fa; /* Light teal background */
+}
+
+/* Navigation bar styles */
+nav {
+	background-color: #009688; /* Teal color for the navbar */
+	padding: 10px 0;
+}
+
+nav ul {
+	list-style: none;
+	display: flex;
+	justify-content: right;
+}
+
+nav ul li {
+	margin: 0 10px;
+}
+
+nav ul li a {
+	color: #fff; /* White text for the navbar links */
+	text-decoration: none;
+	font-size: 18px;
+	padding: 8px 12px;
+	display: block;
+	position: relative; /* Required for the hover effect */
+	overflow: hidden; /* Required for the hover effect */
+	transition: background-color 0.3s ease;
+	/* Transition for background color */
+}
+
+/* Navbar hover effect */
+nav ul li a:hover {
+	background-color: #00796b; /* Darker teal on hover */
+	border-radius: 5px;
+	transform: translateY(-2px);
+}
+
+/* Animation effect for navbar links */
+nav ul li a::before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 3px;
+	bottom: 0;
+	left: 0;
+	background-color: #fff;
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: transform 0.3s ease;
+}
+
+nav ul li a:hover::before {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
+/* Styles for the grid container */
+.grid-container {
+	margin: 20px auto; /* Add margin to separate from top */
+	padding: 20px;
+	max-width: 90%;
+}
+
+/* Styles for table */
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 20px 0;
+	border-radius: 8px; /* Rounded corners */
+	overflow: hidden; /* Ensure border-radius works */
+}
+
+thead {
+	background-color: #00796b; /* Dark teal for table header */
+	color: white;
+}
+
+thead th {
+	padding: 12px 15px;
+	text-align: center;
+}
+
+tbody td {
+	padding: 18px 15px;
+	text-align: center;
+	background-color: #ffffff; /* White for table body */
+	border-bottom: 1px solid #ddd;
+	transition: background-color 0.3s ease;
+}
+
+/* Table row hover effect */
+tbody tr:hover td {
+	background-color: #b2dfdb; /* Light teal on row hover */
+}
+
+/* Animation effect for table row */
+tbody tr {
+	transition: transform 0.3s ease;
+}
+
+tbody tr:hover {
+	transform: translateY(-2px);
+}
+
+h1, h2 {
+	text-align: center;
+	color: #004d40; /* Darker teal for headings */
+}
+
+/* Responsive design */
+@media ( max-width : 768px) {
+	nav ul {
+		flex-direction: column;
+		align-items: center;
+	}
+	table {
+		font-size: 14px;
+	}
+	h1, h2 {
+		font-size: 24px;
+	}
+}

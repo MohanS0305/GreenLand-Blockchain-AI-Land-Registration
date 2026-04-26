@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Buyer Login</title>
+<link rel="stylesheet" th:href="@{/css/reset.css}">
+<link rel="stylesheet" th:href="@{/css/buyer/buyer-login.css}">
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a th:href="@{/}">Home</a></li>
+			<li><a th:href="@{/about}">About Us</a></li>
+			<!-- Changed to proper URL -->
+			<li><a th:href="@{/land-register/buyer/register}">Buyer
+					Registration</a></li>
+		</ul>
+	</nav>
+
+	<div class="container">
+		<h2>Buyer Login</h2>
+		<form th:action="@{/land-register/buyer/login}" method="post"
+			th:object="${buyer}">
+			<div>
+				<label for="email">Email:</label> <input type="email" id="email"
+					th:field="*{email}" required />
+			</div>
+			<div>
+				<label for="password">Password:</label> <input type="password"
+					id="password" th:field="*{password}" required />
+			</div>
+			<div class="btn-container">
+				<button type="submit">Buyer Login</button>
+			</div>
+
+			<!-- display error message -->
+			<div th:if="${error}" class="error-messsage">
+				<p th:text="${error}"></p>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

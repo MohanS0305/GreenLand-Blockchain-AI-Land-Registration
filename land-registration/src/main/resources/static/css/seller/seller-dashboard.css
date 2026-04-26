@@ -1,0 +1,220 @@
+body {
+	background-color: #f4f4f4;
+	background-image: url('../../img/seller-dashboard-bg.jpg');
+	background-size: cover; /* Ensures the image covers the entire area */
+	background-repeat: no-repeat; /* Prevents the image from repeating */
+	background-position: center; /* Centers the image */
+	background-attachment: fixed;
+}
+
+/* Navigation styles */
+nav {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 1;
+	background-color: #333;
+	color: white;
+	padding: 15px;
+}
+
+nav ul {
+	list-style-type: none;
+	text-align: right;
+}
+
+nav ul li {
+	display: inline-block; /* Use inline-block for positioning */
+	margin-right: 15px;
+	position: relative;
+	/* Needed for absolute positioning of the underline */
+}
+
+nav ul li a {
+	color: white;
+	text-decoration: none;
+	position: relative;
+	/* Needed for absolute positioning of the underline */
+	transition: color 0.3s; /* Smooth transition for color change */
+}
+
+nav ul li a::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 2px; /* Height of the underline */
+	background-color: white; /* Color of the underline */
+	left: 0;
+	bottom: -5px; /* Position below the text */
+	transform: scaleX(0); /* Initially scale to 0 */
+	transform-origin: bottom right; /* Start from right */
+	transition: transform 0.3s ease; /* Smooth transition */
+}
+
+nav ul li a:hover::after {
+	transform: scaleX(1); /* Scale to full width */
+	transform-origin: bottom left; /* End from left */
+}
+
+nav ul li a:hover {
+	color: #4CAF50; /* Change text color on hover */
+}
+
+/* Main title styles */
+h1 {
+	text-align: center;
+	color: black;
+	margin: 20px 0;
+	padding-top: 70px;
+}
+
+/* Container styles */
+.container {
+	display: flex;
+	justify-content: center; /* Center the boards */
+	flex-wrap: wrap; /* Allow wrapping on smaller screens */
+	padding: 20px;
+	width: 80%; /* Fixed width */
+	margin: 0 auto; /* Center the container itself */
+}
+
+/* View board styles */
+.view-board {
+	display: flex;
+	margin: 0 auto; /* Center the View board */
+	gap: 25px; /* Space between the boards */
+	justify-content: center; /* Center the items within the view board */
+	max-width: 100%; /* Allow it to be full width but centered */
+}
+
+/* Board styles */
+.buyer-board, .sell-land-board, .land-count-board {
+	background-color: rgba(255, 255, 255, 0.3);
+	/* Transparent white background */
+	backdrop-filter: blur(10px); /* Apply blur effect */
+	border-radius: 5px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	min-width: 300px; /* Minimum width for responsiveness */
+	width: 70%; /* Set a percentage width */
+	max-width: 800px; /* Maximum width for responsiveness */
+	text-align: center;
+}
+
+/* Header styles for both boards */
+.buyer-board-header, .sell-board-header, .land-board-header {
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+/* Count styles */
+.buyer-board-count, .sell-board-count, .land-board-count {
+	font-size: 2em;
+	color: #333;
+}
+
+/* Button container styles */
+.buyer-land-container, .sell-land-container, .land-container {
+	margin-top: 15px;
+	text-align: left; /* left buttons */
+}
+
+/* Button styles */
+.add-land-btn, .sell-land-btn, .logout-btn {
+	background-color: #4CAF50; /* Green */
+	color: white;
+	border: none;
+	padding: 10px 15px;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 5px;
+	transition: background-color 0.3s;
+	/* Smooth transition for button hover */
+}
+
+.add-land-btn:hover, .sell-land-btn:hover, .logout-btn:hover {
+	background-color: #45a049; /* Darker green on hover */
+}
+
+/* Grid container styles */
+.grid-container {
+	width: 100%; /* Full width of the container */
+	max-width: 80%; /* Maximum width for the grid */
+	margin: 20px auto; /* Center the grid container */
+	background-color: rgba(255, 255, 255, 0.3);
+	/* Transparent white background */
+	backdrop-filter: blur(10px); /* Apply blur effect */
+	border-radius: 5px; /* Rounded corners */
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+	padding: 20px; /* Padding inside the grid container */
+}
+
+.grid-container h2 {
+	margin-bottom: 15px;
+}
+
+/* Table container styles */
+.table-container {
+	width: 100%; /* Full width of the container */
+	border-collapse: collapse;
+	border-radius: 5px; /* Rounded corners */
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+	/* Softer shadow for depth */
+	overflow: hidden; /* Prevent overflow on rounded corners */
+}
+
+/* Header styles for table */
+thead th {
+	background-color: #4CAF50; /* Vibrant green background for headers */
+	color: white; /* White text for headers */
+	padding: 12px; /* Padding for table headers */
+	text-align: center; /* Align text to the center */
+	font-weight: bold; /* Bold text for headers */
+	letter-spacing: 0.5px; /* Slight letter spacing for readability */
+}
+
+/* Body styles for table rows */
+tbody tr {
+	transition: background-color 0.3s, transform 0.2s;
+	/* Smooth transition for hover effect */
+}
+
+tbody tr:hover {
+	background-color: #cfefd5; /* Light green background on row hover */
+	transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+/* Data cell styles */
+td {
+	text-align: center; /* Align text to the center */
+	padding: 12px; /* Padding for table data */
+	color: #555; /* Dark grey text for data */
+}
+
+/* Alternate row background colors */
+tbody tr:nth-child(even) {
+	background-color: rgb(114, 207, 128);
+	/* Light green background for even rows */
+}
+
+/* Responsive styles */
+@media ( max-width : 600px) {
+	.view-board {
+		flex-direction: column; /* Stack boards on small screens */
+		align-items: center; /* Center the boards */
+	}
+	.table-container {
+		max-width: 100%; /* Full width on smaller screens */
+		padding: 10px; /* Less padding on smaller screens */
+	}
+	table {
+		font-size: 14px; /* Adjust font size for readability */
+	}
+	thead th {
+		padding: 10px; /* Adjust padding for headers */
+	}
+	td {
+		padding: 8px; /* Adjust padding for data cells */
+	}
+}

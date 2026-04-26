@@ -1,0 +1,164 @@
+body {
+	background-color: #f4f4f4;
+	background-image: url('../../img/register-bg.jpg');
+	background-size: cover; /* Ensures the image covers the entire area */
+	background-repeat: no-repeat; /* Prevents the image from repeating */
+	background-position: center; /* Centers the image */
+	background-attachment: fixed;
+}
+
+h2 {
+	text-align: center;
+	color: #333;
+}
+
+nav {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 1;
+	background-color: #4CAF50;
+	padding: 10px 0;
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	text-align: right;
+}
+
+nav ul li {
+	display: inline;
+	margin-right: 20px;
+	position: relative;
+	/* Allows absolute positioning of the pseudo-element */
+}
+
+nav a {
+	color: white;
+	text-decoration: none;
+	position: relative; /* Allows for the animated underline */
+}
+
+nav a::after {
+	content: ''; /* Create a pseudo-element */
+	display: block;
+	width: 100%; /* Match the width of the text */
+	height: 2px; /* Thickness of the underline */
+	background: white; /* Color of the underline */
+	position: absolute; /* Position it under the text */
+	left: 0; /* Start from the left */
+	bottom: -5px; /* Position it slightly below the text */
+	transform: scaleX(0); /* Initially hidden */
+	transition: transform 0.3s ease;
+	/* Animation effect for the underline */
+}
+
+nav a:hover::after {
+	transform: scaleX(1); /* Show underline on hover */
+}
+
+form {
+	max-width: 400px;
+	margin: 100px auto;
+	padding: 20px;
+	background-color: rgba(255, 255, 255, 0.3);
+	/* Transparent white background */
+	backdrop-filter: blur(10px); /* Apply blur effect */
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+div {
+	margin-bottom: 15px;
+}
+
+label {
+	display: block;
+	color: #333;
+	margin-bottom: 5px;
+}
+
+input[type="text"], input[type="number"], input[type="email"], input[type="password"],
+	input[type="file"] {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-sizing: border-box;
+	transition: border-color 0.3s ease, background-color 0.3s ease;
+	/* Animation effects */
+}
+
+/* Focus effect */
+input:focus {
+	border-color: #4CAF50; /* Change border color */
+	background-color: rgba(76, 175, 80, 0.1);
+	/* Light green background on focus */
+	outline: none; /* Remove default outline */
+}
+
+/* Remove spinner buttons in Chrome, Safari, and Edge */
+.aadhar-field input[type="number"]::-webkit-inner-spin-button,
+	.aadhar-field input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Styling for the ID proof document input field */
+input[type="file"].id-proof {
+	display: none;
+	width: 100%; /* Full width */
+	padding: 10px; /* Padding for the input */
+	border: 2px solid #4CAF50; /* Green border */
+	border-radius: 5px; /* Rounded corners */
+	background-color: #f9f9f9; /* Light background color */
+	transition: border-color 0.3s ease, background-color 0.3s ease;
+	/* Animation effects */
+}
+
+/* Change styles on focus */
+input[type="file"].id-proof:focus {
+	border-color: #45a049; /* Darker green border on focus */
+	background-color: rgba(76, 175, 80, 0.1);
+	/* Light green background on focus */
+	outline: none; /* Remove default outline */
+}
+
+/* Custom styles for file input label */
+input[type="file"].id-proof+label {
+	display: inline-block; /* Inline block for label */
+	padding: 10px 15px; /* Padding */
+	background-color: #4CAF50; /* Green background */
+	color: white; /* Text color */
+	border-radius: 5px; /* Rounded corners */
+	cursor: pointer; /* Pointer cursor on hover */
+	transition: background-color 0.3s ease, transform 0.2s ease;
+	/* Animation for background color */
+}
+
+/* Change background on hover */
+input[type="file"].id-proof+label:hover {
+	background-color: #45a049; /* Darker green on hover */
+	transform: scale(1.05);
+}
+
+.btn-container {
+	text-align: center;
+}
+
+button {
+	width: 50%;
+	padding: 10px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #45a049;
+}

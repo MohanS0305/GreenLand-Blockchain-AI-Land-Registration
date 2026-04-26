@@ -1,0 +1,113 @@
+body {
+	background-image: url('../../img/buyer-login-bg.jpg');
+	background-size: cover; /* Ensures the image covers the entire area */
+	background-repeat: no-repeat; /* Prevents the image from repeating */
+	background-position: center; /* Centers the image */
+}
+
+nav {
+	background-color: #007bff;
+	padding: 10px;
+}
+
+nav ul {
+	list-style-type: none;
+	text-align: right;
+}
+
+nav ul li {
+	display: inline;
+	margin-right: 20px;
+	position: relative;
+	/* Allows absolute positioning of the pseudo-element */
+}
+
+nav a {
+	color: white;
+	text-decoration: none;
+	position: relative; /* Allows for the animated underline */
+}
+
+nav a::after {
+	content: ''; /* Create a pseudo-element */
+	display: block;
+	width: 100%; /* Match the width of the text */
+	height: 2px; /* Thickness of the underline */
+	background: white; /* Color of the underline */
+	position: absolute; /* Position it under the text */
+	left: 0; /* Start from the left */
+	bottom: -5px; /* Position it slightly below the text */
+	transform: scaleX(0); /* Initially hidden */
+	transition: transform 0.3s ease;
+	/* Animation effect for the underline */
+}
+
+nav a:hover::after {
+	transform: scaleX(1); /* Show underline on hover */
+}
+
+.container {
+	max-width: 400px;
+	margin: 100px auto;
+	padding: 20px;
+	background-color: rgba(255, 255, 255, 0.3);
+	/* Transparent white background */
+	backdrop-filter: blur(10px); /* Apply blur effect */
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+	text-align: center;
+	color: #333;
+}
+
+label {
+	display: block;
+	margin-bottom: 5px;
+	color: #555;
+}
+
+input[type="email"], input[type="password"] {
+	width: 90%;
+	padding: 10px;
+	margin-bottom: 15px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	outline: none;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
+	/* Transition for smooth effect */
+}
+
+/* Focus styles for input fields */
+input[type="email"]:focus, input[type="password"]:focus {
+	border-color: #007bff; /* Change border color on focus */
+	box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+	/* Add a subtle glow effect */
+}
+
+.btn-container {
+	text-align: center;
+}
+
+.btn-container button {
+	width: 60%;
+	padding: 10px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.btn-container button:hover {
+	background-color: #0056b3; /* Specific hover effect for buttons */
+}
+
+.error-messsage {
+	margin-top: 10px;
+	color: red;
+	text-align: center;
+	font-size: 16px;
+}

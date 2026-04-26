@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+<link rel="stylesheet" th:href="@{/css/reset.css}">
+<link rel="stylesheet" th:href="@{/css/admin/admin-dashboard.css}">
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a th:href="@{/}">Home</a></li>
+			<li><a th:href="@{#}">About Us</a></li>
+			<li><a th:href="@{/land-register/admin/login}">Logout Admin</a></li>
+		</ul>
+	</nav>
+	<h1 style="color: blue;">Admin Dashboard</h1>
+
+	<h2>Buyers Requested Lands</h2>
+	<div class="grid-container">
+		<table>
+			<thead>
+				<tr>
+					<th>Area</th>
+					<th>City</th>
+					<th>State</th>
+					<th>Price</th>
+					<th>Property ID</th>
+					<th>Survey Number</th>
+					<th class="th-action">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="land : ${requestedLands}">
+					<td th:text="${land.area}">Area</td>
+					<td th:text="${land.city}">City</td>
+					<td th:text="${land.state}">State</td>
+					<td th:text="${land.price}">Price</td>
+					<td th:text="${land.propertyId}">Property ID</td>
+					<td th:text="${land.surveyNo}">Survey Number</td>
+					<td class="action-container">
+						<button class="approved-btn"
+							th:onclick="'approveLandRequest(this, ' + ${land.id} + ')'">Approved</button>
+						<button class="reject-btn"
+							th:onclick="'rejectLandRequest(this, ' + ${land.id} + ')'">Reject</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<script>
+		// approvedLandRequest
+        function approveLandRequest(button, id) {
+            fetch('/land-register/admin/approve/' + id, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Land request approved successfully!');
+                    
+                    // Get the parent row of the button clicked
+                    const row = button.closest('tr');
+                    // Remove the row from the table
+                    row.remove();
+                } else {
+                    alert('Error approving land request.');
+                }
+            });
+        }
+        
+		// rejectLandRequest
+        function rejectLandRequest(button, id) {
+            fetch('/land-register/admin/reject/' + id, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Land request rejected successfully!');
+                    
+                    // Get the parent row of the button clicked
+                    const row = button.closest('tr');
+                    // Remove the row from the table
+                    row.remove();
+                } else {
+                    alert('Error rejecting land request.');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

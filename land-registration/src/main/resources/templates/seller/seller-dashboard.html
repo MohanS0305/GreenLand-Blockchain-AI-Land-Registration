@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seller DashBoard</title>
+<link rel="stylesheet" th:href="@{/css/reset.css}">
+<link rel="stylesheet" th:href="@{/css/seller/seller-dashboard.css}">
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a th:href="@{/}">Home</a></li>
+			<li><a th:href="@{#}">About Us</a></li>
+			<li><a th:href="@{/land-register/seller/login}">Logout
+					seller</a></li>
+		</ul>
+	</nav>
+	<h1>Seller DashBoard</h1>
+
+	<!-- container -->
+	<div class="container">
+		<div class="view-board">
+
+			<!-- buyer-board -->
+			<div class="buyer-board">
+				<p class="buyer-board-header">Total Buyers</p>
+				<p class="buyer-board-count" th:text="${buyerCount}">0</p>
+				<div class="buyer-land-container">
+					<p class="buyer-land-header">Wish to Add Land!</p>
+					<a href="/land-register/seller/add-land">
+						<button class="add-land-btn">Add Land</button>
+					</a>
+				</div>
+			</div>
+
+			<div class="sell-land-board">
+				<p class="sell-board-header">Total Sell Land</p>
+				<p class="sell-board-count" th:text="${sellCount}">0</p>
+				<div class="sell-land-container">
+					<p class="sell-land-header">Wish to Sell Land!</p>
+					<a href="/land-register/seller/view-sell-land-request">
+						<button class="sell-land-btn">View Sell Land</button>
+					</a>
+				</div>
+			</div>
+
+			<!-- land-count-board -->
+			<div class="land-count-board">
+				<p class="land-board-header">Registered Land Count</p>
+				<p class="land-board-count" th:text="${landCount}">0</p>
+				<div class="land-container">
+					<p class="land-header-logout">Wish to Logout!</p>
+					<a href="/land-register/seller/login">
+						<button class="logout-btn">Logout</button>
+					</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Grid table for Land details -->
+	<div class="grid-container">
+		<h2>Your Registered Land Details</h2>
+		<table class="table-container">
+			<thead>
+				<tr>
+					<th>Row Index</th>
+					<th>Area</th>
+					<th>City</th>
+					<th>State</th>
+					<th>Price</th>
+					<th>Property PID</th>
+					<th>Survey Number</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="land, iterStat : ${landList}">
+					<td th:text="${iterStat.index + 1}">1</td>
+					<!-- Row index -->
+					<td th:text="${land.area}">Area</td>
+					<td th:text="${land.city}">City</td>
+					<td th:text="${land.state}">State</td>
+					<td th:text="${land.price}">Price</td>
+					<td th:text="${land.propertyId}">Property PID</td>
+					<td th:text="${land.physicalSurveyNo}">Survey Number</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

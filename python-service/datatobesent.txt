@@ -1,0 +1,11 @@
+avg_Time_Between_Sent_Trans
+avg_Time Between_Receive_Trans
+send_Trans
+receive_Trans
+min_Value_Sent_to_Contract
+max_Value_Sent_to_Contract
+avg_Value_Sent_to_Contract
+Total_Trans
+Total_Ether_Sent
+Total_Ether_Received
+Total_Ether_Balance

@@ -1,0 +1,132 @@
+/* Set a background color and font for the body */
+body {
+    background-color: #f4f4f4;
+    background-image: url('../../img/seller-login-bg.jpg');
+    background-size: cover; /* Ensures the image covers the entire area */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center; /* Centers the image */
+}
+
+/* Navigation styles */
+nav {
+    background-color: #4CAF50; /* Green background */
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    text-align: right;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+    padding: 8px;
+    position: relative; /* Allows absolute positioning of the pseudo-element */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    position: relative; /* Allows for the animated underline */
+}
+
+nav a::after {
+    content: ''; /* Create a pseudo-element */
+    display: block;
+    width: 100%; /* Match the width of the text */
+    height: 2px; /* Thickness of the underline */
+    background: white; /* Color of the underline */
+    position: absolute; /* Position it under the text */
+    left: 0; /* Start from the left */
+    bottom: -5px; /* Position it slightly below the text */
+    transform: scaleX(0); /* Initially hidden */
+    transition: transform 0.3s ease; /* Animation effect for the underline */
+}
+
+nav a:hover::after {
+    transform: scaleX(1); /* Show underline on hover */
+}
+
+/* Container styles for the form */
+.container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.3); /* Transparent white background */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styles */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form div {
+    margin-bottom: 15px; /* Space between form elements */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px; /* Space below labels */
+}
+
+/* Input styles */
+input[type="email"], input[type="password"] {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding inside the input */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in total width */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for border and shadow */
+}
+
+input[type="email"]:focus, input[type="password"]:focus {
+    border-color: #4CAF50; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Add shadow effect on focus */
+    animation: pulse 0.5s; /* Add pulse animation */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05); /* Slightly enlarge */
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Button styles */
+.btn-container {
+    text-align: center; /* Center the button */
+}
+
+button {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 10px 20px; /* Padding inside the button */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth transition for background */
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Error message styles */
+.error-message {
+    margin-top: 10px; /* Space above error message */
+    color: red;
+    text-align: center; /* Center error message */
+    font-size: 16px;
+}

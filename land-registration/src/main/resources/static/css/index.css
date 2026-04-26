@@ -1,0 +1,120 @@
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+	text-align: center;
+	background-image: url('../img/index-bg-img.jpg');
+	background-size: cover; /* Ensures the image covers the entire area */
+	background-repeat: no-repeat; /* Prevents the image from repeating */
+	background-position: center; /* Centers the image */
+}
+
+.navbar {
+	background: black;
+	padding: 15px 0;
+	text-align: right;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+.nav-link {
+	text-decoration: none;
+	color: white;
+	padding: 10px 20px;
+	transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+	border-radius: 3px;
+	color: #007bff;
+}
+
+.container {
+	background-color: rgba(255, 255, 255, 0.3);
+	/* Transparent white background */
+	backdrop-filter: blur(10px); /* Apply blur effect */
+	border-radius: 8px;
+	padding: 30px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	width: 90%;
+	max-width: 600px;
+	min-width: 300px;
+	margin: 80px auto 60px;
+	/* Margin adjusted for spacing from navbar and footer */
+}
+
+h1 {
+	color: #333;
+}
+
+p {
+	font-size: 18px;
+	margin-bottom: 30px;
+}
+
+.button-group {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+}
+
+.button {
+	text-decoration: none;
+	padding: 15px 30px;
+	background-color: rgba(0, 123, 255, 0.7);
+	/* Semi-transparent button background */
+	color: white;
+	border-radius: 5px;
+	font-size: 16px;
+	width: 100%;
+	max-width: 200px;
+	transition: background-color 0.3s ease;
+}
+
+.button:hover {
+	background-color: rgba(0, 123, 255, 1); /* Solid background on hover */
+}
+
+.footer {
+	padding: 20px 0;
+	background-color: rgba(255, 255, 255, 0.3);
+	/* Transparent white background */
+	box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	backdrop-filter: blur(5px); /* Apply blur effect */
+	display: flex; /* Use flexbox for layout */
+	justify-content: space-between; /* Align items to both sides */
+	align-items: center; /* Vertically center the content */
+}
+
+.footer-content {
+	width: 100%;
+	display: flex; /* Flex container for footer sections */
+	justify-content: space-between; /* Space items out */
+	padding: 0 10px;
+}
+
+.footer-left, .footer-right {
+	width: 50%; /* Make both sections take half the width */
+}
+
+.footer-left {
+	text-align: left; /* Align text to the left */
+}
+
+.footer-right {
+	text-align: right; /* Align text to the right */
+}
+
+.footer p {
+	margin: 2px 0; /* Spacing between footer lines */
+	color: black;
+}
+
+.footer p span {
+	color: white;
+}

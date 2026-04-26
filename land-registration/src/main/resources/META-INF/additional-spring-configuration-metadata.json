@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "title",
+    "type": "java.lang.String",
+    "description": "A description for 'title'"
+  },
+  {
+    "name": "pdfDir",
+    "type": "java.lang.String",
+    "description": "A description for 'pdfDir'"
+  }
+]}

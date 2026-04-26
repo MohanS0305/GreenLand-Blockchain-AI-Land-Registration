@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buyer Dashboard</title>
+<link rel="stylesheet" th:href="@{/css/reset.css}">
+<link rel="stylesheet" th:href="@{/css/buyer/buyer-dashboard.css}">
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a th:href="@{/}">Home</a></li>
+			<li><a th:href="@{#}">About Us</a></li>
+			<li><a th:href="@{/land-register/buyer/login}">Logout Buyer</a></li>
+		</ul>
+	</nav>
+
+	<h1>Buyer Dashboard</h1>
+
+	<!-- Container -->
+	<div class="container">
+
+		<div class="view-board">
+
+			<!-- Total Buyers -->
+			<div class="seller-board">
+				<p class="seller-board-header">Total Sellers</p>
+				<p class="seller-board-count" th:text="${sellerCount}">0</p>
+				<div class="seller-land-container">
+					<p class="land-header-logout">Wish to Logout!</p>
+					<a href="/land-register/buyer/login">
+						<button class="logout-btn">Logout</button>
+					</a>
+				</div>
+			</div>
+
+			<!-- Registered Land Count -->
+			<div class="land-count-board">
+				<p class="land-board-header">Registered Land Count</p>
+				<p class="land-board-count" th:text="${landCount}">0</p>
+				<div class="land-container">
+					<div class="owned-land-container">
+						<p class="buyer-land-header">Owned Lands</p>
+						<a href="/land-register/buyer/purchased-land">
+							<button class="land-btn">View Your Land</button>
+						</a>
+					</div>
+
+					<div class="buyer-land-request-container">
+						<p class="buyer-land-request-header">Request Lands</p>
+						<a href="/land-register/buyer/view-land-request">
+							<button class="land-request-btn">View Request Land</button>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Total Requests -->
+			<div class="total-requests-board">
+				<p class="requests-board-header">Total Requests</p>
+				<p class="requests-board-count" th:text="${requestCount}">0</p>
+
+				<div class="requests-container">
+					<p class="requests-header">Make Payments for Approved Land
+						Requests</p>
+					<a href="/land-register/buyer/make-payment">
+						<button class="manage-requests-btn">Make Payment</button>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Grid table for Land details -->
+		<div class="grid-container">
+			<h2>Seller Land Details</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Row Index</th>
+						<th>Area</th>
+						<th>City</th>
+						<th>State</th>
+						<th>Price</th>
+						<th>Property PID</th>
+						<th>Survey Number</th>
+						<th>Request Land</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="land, iterStat : ${landList}">
+						<td th:text="${iterStat.index + 1}">1</td>
+						<td th:text="${land.area}">Area</td>
+						<td th:text="${land.city}">City</td>
+						<td th:text="${land.state}">State</td>
+						<td th:text="${land.price}">Price</td>
+						<td th:text="${land.propertyId}">Property PID</td>
+						<td th:text="${land.physicalSurveyNo}">Survey Number</td>
+						<td>
+							<button class="request-land-btn" th:data-area="${land.area}"
+								th:data-city="${land.city}" th:data-state="${land.state}"
+								th:data-price="${land.price}"
+								th:data-property-id="${land.propertyId}"
+								th:data-survey-no="${land.physicalSurveyNo}"
+								onclick="requestLand(this)">Request Land</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<!-- script file for send particular land details to admin  -->
+	<script>
+    function requestLand(button) {
+    	const row = button.closest("tr");
+        const area = button.dataset.area;
+        const city = button.dataset.city;
+        const state = button.dataset.state;
+        const price = button.dataset.price;
+        const propertyId = button.dataset.propertyId;
+        const surveyNo = button.dataset.surveyNo;
+        const status = "PENDING";
+
+        // Make an AJAX request to send land details to the server
+        fetch('/land-register/buyer/request-land', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                area: area,
+                city: city,
+                state: state,
+                price: price,
+                propertyId: propertyId,
+                surveyNo: surveyNo,
+                status: status
+            }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            // location.reload(); // Refresh the page
+            return response.json(); // Parse the JSON response
+        })
+        .then(data => {
+            console.log(data.message); // Log the success message
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('Land request successfully send to Admin!');
+            row.remove(); // Remove the row dynamically
+        });
+    }
+</script>
+
+</body>
+</html>

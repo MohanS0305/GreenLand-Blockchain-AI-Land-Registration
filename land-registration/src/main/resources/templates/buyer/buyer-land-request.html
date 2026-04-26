@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buyer Land Request</title>
+<link rel="stylesheet" th:href="@{/css/reset.css}">
+<link rel="stylesheet" th:href="@{/css/buyer/buyer-land-request.css}">
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a th:href="@{/}">Home</a></li>
+			<li><a th:href="@{#}">About Us</a></li>
+			<li><a th:href="@{/land-register/buyer/dashboard}">View
+					Buyer Dashboard</a></li>
+		</ul>
+	</nav>
+	<h1>Buyer Land Request</h1>
+
+	<h2>Requested Lands</h2>
+	<div class="grid-container">
+		<table>
+			<thead>
+				<tr>
+					<th>Area</th>
+					<th>City</th>
+					<th>State</th>
+					<th>Price</th>
+					<th>Property ID</th>
+					<th>Survey Number</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="requestLand : ${requestLandList}">
+					<td th:text="${requestLand.area}">Area</td>
+					<td th:text="${requestLand.city}">City</td>
+					<td th:text="${requestLand.state}">State</td>
+					<td th:text="${requestLand.price}">Price</td>
+					<td th:text="${requestLand.propertyId}">Property ID</td>
+					<td th:text="${requestLand.surveyNo}">Survey Number</td>
+					<td th:text="${requestLand.status}">Status</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

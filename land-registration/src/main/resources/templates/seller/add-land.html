@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Add Land</title>
+<link rel="stylesheet" th:href="@{/css/reset.css}" />
+<link rel="stylesheet" th:href="@{/css/seller/add-land.css}" />
+</head>
+
+<body>
+	<!-- Navigation Bar -->
+	<nav>
+		<ul>
+			<li><a th:href="@{/land-register/}">Home</a></li>
+			<li><a th:href="@{/land-register/seller/dashboard}">View
+					Seller</a></li>
+		</ul>
+	</nav>
+
+	<div class="container">
+		<h2>Add Land Details</h2>
+		<form th:action="@{/land-register/seller/add-land}"
+			th:object="${addland}" method="post" enctype="multipart/form-data">
+
+			<!-- Area field -->
+			<div>
+				<label for="area">Area (in sqm):</label> <input type="number"
+					id="area" name="area" required />
+			</div>
+
+			<!-- City field -->
+			<div>
+				<label for="city">City:</label> <input type="text" id="city"
+					name="city" required />
+			</div>
+
+			<!-- State field -->
+			<div>
+				<label for="state">State:</label> <input type="text" id="state"
+					name="state" required />
+			</div>
+
+			<!-- Price field -->
+			<div>
+				<label for="price">Price:</label> <input type="number" id="price"
+					name="price" required />
+			</div>
+
+			<!-- Property PID Number field -->
+			<div>
+				<label for="propertyId">Property PID Number:</label> <input
+					type="number" id="propertyId" name="propertyId" required />
+			</div>
+
+			<!-- Physical Survey Number field -->
+			<div>
+				<label for="physicalSurveyNo">Physical Survey Number:</label> <input
+					type="number" id="physicalSurveyNo" name="physicalSurveyNo"
+					required />
+			</div>
+
+			<!-- Land Image upload -->
+			<div>
+				<label for="landImage">Insert Land Image:</label> <input type="file"
+					id="landImage" name="landImage" required />
+			</div>
+
+			<!-- Aadhar No field -->
+			<div>
+				<label for="aadharNo">Aadhar No:</label> <input type="number"
+					id="aadharNo" name="aadharNo" required />
+			</div>
+
+			<!-- Submit button -->
+			<div class="add-land-btn-container">
+				<button type="submit">Add Land</button>
+			</div>
+
+			<!-- Error message display -->
+			<div th:if="${error}">
+				<p style="color: red;" th:text="${error}"></p>
+			</div>
+		</form>
+	</div>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			document.querySelector(".container").classList.add(
+					"animate__animated", "animate__fadeIn");
+		});
+	</script>
+</body>
+</html>

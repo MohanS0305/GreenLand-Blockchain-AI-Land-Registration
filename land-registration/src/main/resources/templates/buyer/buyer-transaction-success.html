@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Success</title>
+<link rel="stylesheet" th:href="@{/css/reset.css}">
+<link rel="stylesheet"
+	th:href="@{/css/buyer/buyer-transaction-success.css}">
+<!-- Link to your styles -->
+</head>
+<body>
+
+	<nav>
+		<ul>
+			<li><a th:href="@{/}">Home</a></li>
+			<li><a th:href="@{#}">About Us</a></li>
+			<li><a th:href="@{/land-register/buyer/make-payment}">View
+					Make Payment</a></li>
+			<li><a th:href="@{/land-register/buyer/dashboard}">View
+					Buyer Dashboard</a></li>
+		</ul>
+	</nav>
+
+	<div class="container">
+		<h1>Land Transaction Complete</h1>
+
+		<!-- Payment success message display -->
+		<div th:if="${paymentMessage}" class="payment-message">
+			<p th:text="${paymentMessage}"></p>
+		</div>
+
+		<div th:if="${ipfsHash}" class="document-container">
+			<div class="hash-container">
+				<span class="title">IpfsHash:</span> <span id="ipfsHashValue"
+					class="value" th:text="${ipfsHash}"></span>
+			</div>
+			<h3>Click Below Button To View Your Purchased Land Document</h3>
+			<button id="viewDocumentBtn" onclick="viewDocument()">View
+				Document</button>
+			<iframe id="pdfViewer" title="PDF Document"></iframe>
+		</div>
+	</div>
+
+	<script>
+	function viewDocument() {
+	    console.log("View document clicked");
+	    const pdfViewer = document.getElementById('pdfViewer');
+	    const fileHash = document.getElementById('ipfsHashValue').innerText.trim();
+	    console.log(fileHash);
+	    const url = `/land-register/buyer-land/files/${fileHash}`;
+
+	    fetch(url)
+	        .then(response => {
+	            if (!response.ok) {
+	                throw new Error('Network response was not ok');
+	            }
+	            return response.blob(); // Get the PDF file as a blob
+	        })
+	        .then(blob => {
+	            const pdfUrl = URL.createObjectURL(blob);
+	            pdfViewer.src = pdfUrl; // Set the source of the iframe to the PDF blob URL
+	            pdfViewer.style.display = 'block'; // Show the iframe
+	        })
+	        .catch(error => {
+	            console.error('Error fetching the PDF:', error);
+	        });
+	}
+</script>
+</body>
+</html>

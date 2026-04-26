@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Make Payment</title>
+<link rel="stylesheet" th:href="@{/css/reset.css}">
+<link rel="stylesheet" th:href="@{/css/buyer/buyer-make-payment.css}">
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a th:href="@{/}">Home</a></li>
+			<li><a th:href="@{#}">About Us</a></li>
+			<li><a th:href="@{/land-register/buyer/dashboard}">View
+					Buyer Dashboard</a></li>
+		</ul>
+	</nav>
+	<h1>Land Purchase Payment Portal</h1>
+
+	<div class="payment-container">
+		<h2>Details of Your Land Purchase</h2>
+		<table class="land-details-table">
+			<thead>
+				<tr>
+					<th>Area</th>
+					<th>City</th>
+					<th>State</th>
+					<th>Property ID</th>
+					<th>Survey Number</th>
+					<th>Price</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="land : ${land}">
+					<td th:text="${land.area}">Area</td>
+					<td th:text="${land.city}">City</td>
+					<td th:text="${land.state}">State</td>
+					<td th:text="${land.propertyId}">Property ID</td>
+					<td th:text="${land.surveyNo}">Survey Number</td>
+					<td th:text="${land.price}">Price</td>
+					<td><form th:action="@{/land-register/buyer/land-transaction}"
+							method="post">
+							<input type="hidden" name="area" th:value="${land.area}" /> <input
+								type="hidden" name="city" th:value="${land.city}" /> <input
+								type="hidden" name="state" th:value="${land.state}" /> <input
+								type="hidden" name="propertyId" th:value="${land.propertyId}" />
+							<input type="hidden" name="surveyNo" th:value="${land.surveyNo}" />
+							<input type="hidden" name="price" th:value="${land.price}" />
+							<button type="submit" class="make-payment-btn">Make
+								Payment</button>
+						</form></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Failed</title>
+<link rel="stylesheet" th:href="@{/css/reset.css}">
+<link rel="stylesheet"
+	th:href="@{/css/buyer/buyer-transaction-failed.css}">
+<!-- Link to your styles -->
+</head>
+<body>
+
+	<nav>
+		<ul>
+			<li><a th:href="@{/}">Home</a></li>
+			<li><a th:href="@{#}">About Us</a></li>
+			<li><a th:href="@{/land-register/buyer/make-payment}">View
+					Make Payment</a></li>
+			<li><a th:href="@{/land-register/buyer/dashboard}">View
+					Buyer Dashboard</a></li>
+		</ul>
+	</nav>
+
+	<div class="container">
+		<h1>Land Transaction Failed</h1>
+
+		<!-- Error message display -->
+		<div th:if="${errorMessage}" class="error-message">
+			<p th:text="${errorMessage}"></p>
+		</div>
+	</div>
+</body>
+</html>

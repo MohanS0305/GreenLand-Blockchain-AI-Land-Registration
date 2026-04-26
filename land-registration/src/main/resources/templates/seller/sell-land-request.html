@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>View Sell Land</title>
+<link rel="stylesheet" th:href="@{/css/reset.css}">
+<link rel="stylesheet" th:href="@{/css/seller/sell-land-request.css}">
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a th:href="@{/}">Home</a></li>
+			<li><a th:href="@{/about}">About Us</a></li>
+			<li><a th:href="@{/land-register/seller/dashboard}">View
+					Seller Dashboard</a></li>
+		</ul>
+	</nav>
+	<h1>View Sell Land</h1>
+
+	<h2>Available Lands for Sale</h2>
+	<div class="grid-container">
+		<table>
+			<thead>
+				<tr>
+					<th>Area</th>
+					<th>City</th>
+					<th>State</th>
+					<th>Price</th>
+					<th>Property ID</th>
+					<th>Survey Number</th>
+					<th>Status</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="sellLand : ${sellLandList}">
+					<td th:text="${sellLand.area}">Area</td>
+					<td th:text="${sellLand.city}">City</td>
+					<td th:text="${sellLand.state}">State</td>
+					<td th:text="${sellLand.price}">Price</td>
+					<td th:text="${sellLand.propertyId}">Property ID</td>
+					<td th:text="${sellLand.physicalSurveyNo}">Survey Number</td>
+					<td th:text="${sellLand.status}">Status</td>
+					<td class="btn-container">
+						<button class="request-land-btn sell"
+							th:onclick="'sellLandRequest(this, ' + ${sellLand.propertyId} + ')'">Sell
+							Land</button>
+						<button class="request-land-btn not-sell"
+							th:onclick="'notSellLandRequest(this, ' + ${sellLand.propertyId} + ')'">Not
+							Sell Land</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<script>
+    // Function to handle selling land
+    function sellLandRequest(button, propertyId) {
+        fetch('/land-register/seller/request-land/sell/' + propertyId, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Land sell successfully!');
+                
+                // Get the parent row of the button clicked
+                const row = button.closest('tr');
+                // Remove the row from the table
+                row.remove();
+            } else {
+                alert('Error selling land.');
+            }
+        });
+    }
+
+    // Function to handle not selling land
+    function notSellLandRequest(button, propertyId) {
+        fetch('/land-register/seller/request-land/not-sell/' + propertyId, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Land sale request marked as failed.');
+                
+                // Get the parent row of the button clicked
+                const row = button.closest('tr');
+                // Remove the row from the table
+                row.remove();
+            } else {
+                alert('Error marking land as not sold.');
+            }
+        });
+    }
+</script>
+</body>
+</html>

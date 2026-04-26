@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Land Registration System</title>
+	<link rel="stylesheet" th:href="@{/css/reset.css}">
+	<link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+
+<body>
+
+	<nav class="navbar">
+		<a th:href="@{/land-register/}" class="nav-link">Home</a> <a th:href="@{#}" class="nav-link">About</a> <a
+			th:href="@{/contact}" class="nav-link">Contact Us</a>
+	</nav>
+
+	<div class="container">
+		<h1>Welcome to the Land Registration System</h1>
+		<p>Please choose your role to continue:</p>
+
+		<div class="button-group">
+			<a th:href="@{/land-register/admin/login}" class="button">Admin</a> <a
+				th:href="@{/land-register/buyer/login}" class="button">Buyer</a> <a
+				th:href="@{/land-register/seller/login}" class="button">Seller</a>
+		</div>
+	</div>
+
+	<footer class="footer">
+		<div class="footer-content">
+			<div class="footer-left">
+				<p>Contact Information: +91 9845628145</p>
+				<p>Email: info@landregistration.com</p>
+			</div>
+			<div class="footer-right">
+				<p>Address: 123 Land St, Cityville, ST 12345</p>
+				<p>
+					<span>&copy;</span>
+					<script>
+						document.write(new Date().getFullYear());
+					</script>
+					Land Registration System. All rights
+					reserved.
+				</p>
+			</div>
+		</div>
+	</footer>
+</body>
+
+</html>

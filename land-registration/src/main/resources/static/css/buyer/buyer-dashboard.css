@@ -1,0 +1,245 @@
+body {
+	background-color: #f4f4f4;
+	background-image: url('../../img/buyer-dashboard-bg.jpg');
+	background-size: cover; /* Ensures the image covers the entire area */
+	background-repeat: no-repeat; /* Prevents the image from repeating */
+	background-position: center; /* Centers the image */
+	background-attachment: fixed;
+}
+
+/* Navigation styles */
+nav {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 1;
+	background-color: #333;
+	color: white;
+	padding: 15px;
+}
+
+nav ul {
+	list-style-type: none;
+	text-align: right;
+	padding: 0;
+	margin: 0;
+}
+
+nav ul li {
+	display: inline-block;
+	margin-right: 15px;
+}
+
+nav ul li a {
+	color: white;
+	text-decoration: none;
+	position: relative;
+	transition: color 0.3s;
+}
+
+nav ul li a::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	background-color: white;
+	left: 0;
+	bottom: -5px;
+	transform: scaleX(0);
+	transform-origin: bottom right;
+	transition: transform 0.3s ease;
+}
+
+nav ul li a:hover::after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+}
+
+nav ul li a:hover {
+	color: #4CAF50;
+}
+
+/* Main title styles */
+h1 {
+	text-align: center;
+	color: black;
+	margin: 20px 0;
+	padding-top: 70px;
+}
+
+/* Container styles */
+.container {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	padding: 20px;
+}
+
+/* View board styles */
+.view-board {
+	display: flex;
+	gap: 20px;
+	flex-basis: 80%;
+}
+
+.land-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+/* Board styles */
+.seller-board, .land-count-board, .total-requests-board {
+	background-color: rgba(255, 255, 255, 0.3);
+	/* Transparent white background */
+	backdrop-filter: blur(10px); /* Apply blur effect */
+	border-radius: 5px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	flex: 1;
+	min-width: 250px;
+	max-width: 400px;
+	text-align: center;
+}
+
+/* Header styles for boards */
+.seller-board-header, .land-board-header, .requests-board-header,
+	.buyer-land-header, .land-header-logout, .buyer-land-request-header,
+	.requests-header {
+	font-size: 1rem;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.buyer-land-header, .land-header-logout, .buyer-land-request-header,
+	.requests-header {
+	font-size: .8rem; /* Specific font size for certain headers */
+}
+
+/* Count styles */
+.seller-board-count, .land-board-count, .requests-board-count {
+	font-size: 2em;
+	color: #333;
+}
+
+/* Button container styles */
+.seller-land-container, .land-container, .requests-container {
+	margin-top: 15px;
+	text-align: left;
+}
+
+/* Button styles */
+.land-btn, .logout-btn, .land-request-btn, .manage-requests-btn,
+	.request-land-btn {
+	background-color: #4CAF50; /* Green background */
+	color: white;
+	border: none;
+	padding: 10px 15px;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 5px;
+	transition: background-color 0.3s;
+	/* Smooth transition for button hover effects */
+}
+
+.land-btn:hover, .logout-btn:hover, .land-request-btn:hover,
+	.manage-requests-btn:hover {
+	background-color: #45a049; /* Darker green on hover */
+}
+
+.request-land-btn {
+	background-color: #2196F3; /* Blue color */
+}
+
+.request-land-btn:hover {
+	background-color: #1E88E5; /* Darker blue on hover */
+}
+
+/* Grid container styles */
+.grid-container {
+	width: 100%;
+	max-width: 80%;
+	margin: 20px auto;
+	background-color: rgba(255, 255, 255, 0.3);
+	/* Transparent white background */
+	backdrop-filter: blur(10px); /* Apply blur effect */
+	border-radius: 5px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+}
+
+.grid-container h2 {
+	margin-bottom: 15px;
+}
+
+/* Table styles */
+table {
+	width: 100%;
+	max-width: 100%;
+	border-collapse: collapse;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+thead th {
+	background-color: #4CAF50;
+	color: white;
+	padding: 12px;
+	text-align: center;
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+tbody tr {
+	transition: background-color 0.3s, transform 0.2s;
+}
+
+tbody tr:hover {
+	background-color: #e0f7e9;
+	transform: translateY(-2px);
+}
+
+td {
+	text-align: center;
+	padding: 12px;
+	color: #555;
+}
+
+tbody tr:nth-child(even) {
+	background-color: rgb(114, 207, 128);
+}
+
+tbody tr:last-child td:first-child {
+	border-bottom-left-radius: 5px; /* Round bottom-left corner */
+}
+
+tbody tr:last-child td:last-child {
+	border-bottom-right-radius: 5px; /* Round bottom-right corner */
+}
+
+/* Style for the status cell */
+.status-cell {
+	font-weight: bold;
+	color: #FF9800; /* Orange color for pending status */
+}
+
+/* Responsive styles */
+@media ( max-width : 600px) {
+	.view-board {
+		flex-direction: column;
+		align-items: center;
+	}
+	.grid-container {
+		max-width: 100%;
+		padding: 10px;
+	}
+	table {
+		font-size: 14px;
+	}
+	thead th {
+		padding: 10px;
+	}
+	td {
+		padding: 8px;
+	}
+}

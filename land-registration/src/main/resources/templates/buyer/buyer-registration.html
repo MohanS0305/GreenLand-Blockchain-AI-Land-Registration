@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Buyer Registration</title>
+<link rel="stylesheet" th:href="@{/css/reset.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/buyer/buyer-registration.css}">
+</head>
+<body>
+	<!-- Navigation Bar -->
+	<nav>
+		<ul>
+			<li><a th:href="@{/}">Home</a></li>
+			<li><a th:href="@{#}">About Us</a></li>
+			<li><a th:href="@{/land-register/buyer/login}">Buyer Login</a></li>
+		</ul>
+	</nav>
+
+	<!-- Add form action URL, bind the 'buyer' object, and set enctype for file upload -->
+	<form th:action="@{/land-register/buyer/register}" th:object="${buyer}"
+		method="post" enctype="multipart/form-data">
+		<h2>Buyer Registration</h2>
+
+		<!-- Name field -->
+		<div>
+			<label for="name">Name:</label> <input type="text" id="name"
+				name="name" required>
+		</div>
+
+		<!-- Age field -->
+		<div>
+			<label for="age">Age:</label> <input type="number" id="age"
+				name="age" min="0" value="0" required>
+		</div>
+
+		<!-- City field -->
+		<div>
+			<label for="city">City:</label> <input type="text" id="city"
+				name="city" required>
+		</div>
+
+		<!-- Aadhar No. field -->
+		<div class="aadhar-field">
+			<label for="aadharNo">Aadhar No:</label> <input type="number"
+				id="aadharNo" name="aadharNo" required>
+		</div>
+
+		<!-- PAN No. field -->
+		<div>
+			<label for="panNo">PAN No:</label> <input type="text" id="panNo"
+				name="panNo" required>
+		</div>
+
+		<!-- Document file upload -->
+		<div class="form-group">
+			<label for="document">Upload ID Proof Document:</label> <input
+				type="file" id="document" name="document" class="id-proof" /> <label
+				for="document">Choose File</label>
+			<!-- This label acts as a button -->
+		</div>
+
+		<!-- Buyer Block Chain Address field -->
+		<div>
+			<label for="buyerAddress">Buyer Block Chain Address:</label> <input
+				type="text" id="buyerAddress" name="buyerAddress" required>
+		</div>
+
+		<!-- Email field -->
+		<div>
+			<label for="email">Email:</label> <input type="email" id="email"
+				name="email" required>
+		</div>
+
+		<!-- Password field -->
+		<div>
+			<label for="password">Password:</label> <input type="password"
+				id="password" name="password" required>
+		</div>
+
+		<!-- Submit button -->
+		<div class="btn-container">
+			<button type="submit">Register as Buyer</button>
+		</div>
+
+		<div th:if="${error}">
+			<p style="color: red;" th:text="${error}"></p>
+		</div>
+	</form>
+
+</body>
+</html>
